@@ -7,6 +7,16 @@ class CVRepo extends EloquentRepository
     {
         return cv::class;
     }
+
+    public function create($request)
+    {
+        
+    }
+
+    public function update($array, $id)
+    {
+
+    }
 }
 
 

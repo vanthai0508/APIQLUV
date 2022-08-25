@@ -29,7 +29,7 @@ abstract class EloquentRepository implements EloquentInterface
 
     public function update($data, $id)
     {
-        
+        return $this->model->update($data)->where('id', $id);
     }
 
     public function delete($id)

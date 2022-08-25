@@ -16,11 +16,20 @@ class UserController extends Controller
     }
     
 
-    public function list()
+    public function list(Request $request)
     {
-      $user = Auth::user();
+      
 
-      dd($user);
-      echo "thai";
+      
+        return response()->json($request->user()->name);
+    }
+
+    public function update(Request $request , $id)
+    {
+        // $this->user->update($request, $id);
+        
+        // return reponse()->json([
+        //     'status' => 'succes',
+        // ]);
     }
 }

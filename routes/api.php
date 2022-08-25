@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// Route::get('/list', 'App\Http\Controllers\UserController@list');
+
 Route::group([
     'prefix' => 'auth'
 ], function () {
@@ -32,6 +32,7 @@ Route::post('signup', 'App\Http\Controllers\AuthController@signup');
     ], function() {
         Route::get('logout', 'App\Http\Controllers\AuthController@logout');
         Route::get('me', 'App\Http\Controllers\AuthController@user');
+        Route::get('list', 'App\Http\Controllers\UserController@list');
    });
 });
 
