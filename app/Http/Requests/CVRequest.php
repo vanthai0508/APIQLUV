@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class ApplyRequest extends FormRequest
+class CVRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +25,11 @@ class ApplyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required',       
             'position' => 'required',
             'phone' => 'required',
-            'file' => ['required', 'image'],
+            'file' => 'file|image',
+            'id_user' => 'required' 
 
         ];
     }
@@ -40,6 +42,4 @@ class ApplyRequest extends FormRequest
             'phone.required' => 'Vui long nhap phone'
         ];
     }
-
-     
 }

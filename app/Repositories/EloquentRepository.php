@@ -22,9 +22,9 @@ abstract class EloquentRepository implements EloquentInterface
         return $this->model->all();
     }
 
-    public function create($request)
+    public function create(array $request)
     {
-        return $this->model->create($request->all());
+        return $this->model->create($request);
     }
 
     public function update($data, $id)

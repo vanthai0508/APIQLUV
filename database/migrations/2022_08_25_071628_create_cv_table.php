@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('id_user')->unsigned()->nullable();
         //    $table->foreign('id_user')->references('id')->on('users');
             
-            $table->integer('status');
+            $table->integer('status')->unsigned()->default(1);
             
         });
 

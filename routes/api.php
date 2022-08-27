@@ -20,20 +20,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::group([
-    'prefix' => 'auth'
-], function () {
+Route::group([ 'prefix' => 'auth' ], function () 
+{
 //     Route::post('login', 'App\Http\Controllers\AuthController@login');
 //     Route::post('signup', 'App\Http\Controllers\AuthController@register');
-Route::post('login', 'App\Http\Controllers\AuthController@login');
-Route::post('signup', 'App\Http\Controllers\AuthController@signup');
-    Route::group([
-      'middleware' => 'auth:api'
-    ], function() {
+    Route::post('login', 'App\Http\Controllers\AuthController@login');
+    Route::post('signup', 'App\Http\Controllers\AuthController@signup');
+
+    Route::group([ 'middleware' => 'auth:api' ], function() 
+    {
+       
         Route::get('logout', 'App\Http\Controllers\AuthController@logout');
+        
         Route::get('me', 'App\Http\Controllers\AuthController@user');
-        Route::get('list', 'App\Http\Controllers\UserController@list');
-   });
+      //  Route::get('list', 'App\Http\Controllers\UserController@list');
+
+        Route::post('create', 'App\Http\Controllers\CVController@create');
+        
+
+
+        
+        Route::group(['prefix' => 'admin'], function()
+        {
+            Route::get('list', 'App\Http\Controllers\CVController@list');
+        });
+
+        
+
+        
+    });
 });
 
 

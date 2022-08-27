@@ -5,7 +5,7 @@ interface EloquentInterface
 {
     public function list();
 
-    public function create($data);
+    public function create(array $data);
 
     public function update(array $data, $id);
 

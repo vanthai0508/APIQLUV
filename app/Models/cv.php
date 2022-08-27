@@ -6,26 +6,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Symfony\Contracts\Service\Attribute\Required;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class cv extends Model
 {
     use HasFactory;
+    use HasApiTokens;
+    
     
     protected $table = 'cv';
-
-    public $atributes = [
-        'status' => 1
-    ];
+    
+   
+  
   //  protected $fillable = ['title'];
-
-    protected $fillabel = [
-        'name' ,
+  protected $fillable = [
+        'name',
         'position',
         'phone',
         'file',
         'id_user',
-        'status'
-    ];
+        
+        
+        
+  ];
+
+   
 
     public function user()
     {
