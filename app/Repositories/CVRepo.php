@@ -22,6 +22,11 @@ class CVRepo extends EloquentRepository
     // {
     //     return $this->model->create($request);
     // }
+
+    // public function find($id)
+    // {
+    //     return $this->model->where('id', $id)->first();
+    // }
 }
 
 

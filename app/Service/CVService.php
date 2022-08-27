@@ -28,5 +28,10 @@ class CVService
     {
       return  $this->repo->list();
     }
+
+    public function find($id)
+    {
+        return $this->repo->find($id);
+    }
 }
 ?>

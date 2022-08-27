@@ -40,6 +40,18 @@ class CVController extends Controller
             'data' => $data
         ]);
     }
+
+    public function find($id)
+    {
+       $data = $this->cv->find($id);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
+    
+    }
+
  
     
 }

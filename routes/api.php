@@ -19,7 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
 Route::group([ 'prefix' => 'auth' ], function () 
 {
 //     Route::post('login', 'App\Http\Controllers\AuthController@login');
@@ -43,6 +42,10 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::group(['prefix' => 'admin'], function()
         {
             Route::get('list', 'App\Http\Controllers\CVController@list');
+
+            Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
+
+            
         });
 
         
