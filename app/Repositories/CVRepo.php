@@ -14,9 +14,14 @@ class CVRepo extends EloquentRepository
     //     $this->
     // }
 
-    public function update($array, $id)
+    public function done($id)
     {
+        $this->model->where('id', $id)->update(['status' => 0]);
+    }
 
+    public function update(array $request, $id)
+    {
+         $this->model->where('id', $id)->update(['status' => 0]);
     }
     // public function create(array $request)
     // {

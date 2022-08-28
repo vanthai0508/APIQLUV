@@ -34,11 +34,16 @@ class CVController extends Controller
 
     public function list()
     {
-        $data = $this->cv->list();
-        return response()->json([
-            'status' => 'success',
-            'data' => $data
-        ]);
+        $cvs = $this->cv->list();
+
+        foreach($cvs as $cv)
+        {
+            echo $cv->user->name;
+        }
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $data
+        // ]);
     }
 
     public function find($id)
@@ -50,6 +55,31 @@ class CVController extends Controller
             'data' => $data
         ]);
     
+    }
+
+    public function update($id)
+    {
+      //  $this->cv->update($request->all(), $id);
+     //   $data = $this->list();
+
+     //   return response()->json([
+      //      'status' => 'success',
+    //        'data' => $data
+      //  ]);
+
+      echo $id;
+        
+    }
+
+
+    // change status
+    public function done($id)
+    {
+        $this->cv->done($id);
+        
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 
  

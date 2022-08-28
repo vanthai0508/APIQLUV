@@ -27,10 +27,10 @@ abstract class EloquentRepository implements EloquentInterface
         return $this->model->create($request);
     }
 
-    public function update($data, $id)
-    {
-        return $this->model->update($data)->where('id', $id);
-    }
+    // public function update($data, $id)
+    // {
+    //     return $this->model->update($data)->where('id', $id);
+    // }
 
     public function delete($id)
     {

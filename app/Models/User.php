@@ -46,4 +46,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cv()
+    {
+        return $this->hasOne('App\Models\cv', 'id_user', 'id');
+    }
 }

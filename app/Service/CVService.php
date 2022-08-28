@@ -33,5 +33,16 @@ class CVService
     {
         return $this->repo->find($id);
     }
+
+    public function update(array $request, $id)
+    {
+        $request['status'] = 0 ;
+        $this->repo->update($request, $id);
+    }
+
+    public function done($id)
+    {
+        $this->repo->done($id);
+    }
 }
 ?>

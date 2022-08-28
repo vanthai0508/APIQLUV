@@ -45,6 +45,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
             Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
 
+            Route::post('done/{id}', 'App\Http\Controllers\CVController@done');
+
             
         });
 
