@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('position');
             $table->increments('id');
-            $table->integer('status');
+            $table->integer('status')->unsigned()->default(1);
         });
     }
 

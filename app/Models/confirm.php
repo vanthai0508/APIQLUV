@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class confirm extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = 'confirm';
 
@@ -15,7 +16,9 @@ class confirm extends Model
         'dateinterview',
         'id_user',
         'id_cv',
-        'id_xn',
+        'name',
+        'phone',
+        'position',
         'status'
     ];
 

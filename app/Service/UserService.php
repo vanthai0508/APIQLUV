@@ -12,6 +12,7 @@ class UserService
         $this->repo = $repo;
     }
 
+    //list user
     public function list()
     {
         return $this->repo->list();

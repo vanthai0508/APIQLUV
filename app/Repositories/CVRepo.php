@@ -14,6 +14,12 @@ class CVRepo extends EloquentRepository
     //     $this->
     // }
 
+    public function getUser($id)
+    {
+        $cv = $this->model->find($id);
+        return $cv->user;
+    }
+
     public function done($id)
     {
         $this->model->where('id', $id)->update(['status' => 0]);
@@ -30,7 +36,7 @@ class CVRepo extends EloquentRepository
 
     // public function find($id)
     // {
-    //     return $this->model->where('id', $id)->first();
+    //     return $this->model->find($id);
     // }
 }
 

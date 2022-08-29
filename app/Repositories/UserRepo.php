@@ -11,6 +11,10 @@ class UserRepo extends EloquentRepository
         return User::class;
     }
 
+    public function update(array $request, $id)
+    {
+        
+    }
     
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ConfirmRequest extends FormRequest
 {
@@ -11,9 +12,10 @@ class ConfirmRequest extends FormRequest
      *
      * @return bool
      */
+    
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,13 @@ class ConfirmRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'dateinterview' => 'required',
+            'id_user' => 'required',
+            'id_cv' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'position' => 'required'
+
         ];
     }
 }

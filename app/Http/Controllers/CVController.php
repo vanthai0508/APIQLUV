@@ -16,36 +16,40 @@ class CVController extends Controller
     {
         $this->cv = $cv;
     }
-    // public function list()
-    // {
-    //     echo "thai";
-    // }
+    
 
+    //get user follow cv
+    public function getUser($id)
+    {
+        $data = $this->cv->getUser($id);
+
+        echo $data;
+    }
+
+    //create cv
     public function create(CVRequest $request)
     {
+        
         $this->cv->create($request->all());
 
-    //   $user = Auth::user()->email;
+    
         return response()->json([
             'status' => 'success',
             'data' => $request->all()
         ]);
     }
 
+    // list cv
     public function list()
     {
-        $cvs = $this->cv->list();
-
-        foreach($cvs as $cv)
-        {
-            echo $cv->user->name;
-        }
-        // return response()->json([
-        //     'status' => 'success',
-        //     'data' => $data
-        // ]);
+        $data = $this->cv->list();
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
     }
 
+    // find cv
     public function find($id)
     {
        $data = $this->cv->find($id);
@@ -80,6 +84,17 @@ class CVController extends Controller
         return response()->json([
             'status' => 'success'
         ]);
+    }
+
+    // Reject CV
+    public function reject($id)
+    {
+        $this->cv->reject($id);
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+
     }
 
  

@@ -47,6 +47,14 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
             Route::post('done/{id}', 'App\Http\Controllers\CVController@done');
 
+            Route::get('getuser/{id}', 'App\Http\Controllers\CVController@getUser');
+
+            Route::get('reject/{id}', 'App\Http\Controllers\CVController@reject');
+
+            Route::post('createconfirm', 'App\Http\Controllers\ConfirmController@create');
+
+            Route::get('listconfirm', 'App\Http\Controllers\ConfirmController@list');
+
             
         });
 
