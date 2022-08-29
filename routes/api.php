@@ -55,7 +55,9 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
             Route::get('listconfirm', 'App\Http\Controllers\ConfirmController@list');
 
-            
+            Route::get('check', 'App\Http\Controllers\UserController@check');
+
+
         });
 
         

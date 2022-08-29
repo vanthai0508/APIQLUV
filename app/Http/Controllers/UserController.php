@@ -32,4 +32,9 @@ class UserController extends Controller
         //     'status' => 'succes',
         // ]);
     }
+
+    public function check()
+    {
+        echo Auth::check();
+    }
 }
