@@ -29,9 +29,29 @@ class ConfirmService
         return  $this->repo->list();
     }
 
+    //change status
+
     public function done($id)
     {
         $this->repo->done($id);
+    }
+
+    // letter confirm from admin
+    public function letterConfirm()
+    {
+        return $this->repo->letterConfirm();
+    }
+
+    // confirm of user
+    public function userConfirm()
+    {
+        $this->repo->userConfirm();
+    }
+
+    //list user confirmed
+    public function listUserParticipationInterview()
+    {
+        return $this->repo->listUserParticipationInterview();
     }
 }
 ?>

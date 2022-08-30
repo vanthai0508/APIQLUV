@@ -27,9 +27,44 @@ class ConfirmController extends Controller
    
     }
 
+    //list confirm
     public function list()
     {
         $data = $this->confirm->list();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
+    }
+
+    // letter confirm from admin
+    public function letterConfirm()
+    {
+        $data = $this->confirm->letterConfirm();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
+    }
+
+    // confrim of user
+    public function userConfirm()
+    {
+
+        $this->confirm->userConfirm();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+
+    // list user confirmed
+
+    public function listUserParticipationInterview()
+    {
+        $data = $this->confirm->listUserParticipationInterview();
 
         return response()->json([
             'status' => 'success',

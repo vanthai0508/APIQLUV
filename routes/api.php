@@ -21,10 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([ 'prefix' => 'auth' ], function () 
 {
-//     Route::post('login', 'App\Http\Controllers\AuthController@login');
-//     Route::post('signup', 'App\Http\Controllers\AuthController@register');
+
     Route::post('login', 'App\Http\Controllers\AuthController@login');
+
     Route::post('signup', 'App\Http\Controllers\AuthController@signup');
+
+    Route::post('reset-password', 'App\Http\Controllers\ResetPasswordController@sendMail');
+
+    Route::post('reset-password/{token}', 'App\Http\Controllers\ResetPasswordController@reset');
 
     Route::group([ 'middleware' => 'auth:api' ], function() 
     {
@@ -32,12 +36,27 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::get('logout', 'App\Http\Controllers\AuthController@logout');
         
         Route::get('me', 'App\Http\Controllers\AuthController@user');
-      //  Route::get('list', 'App\Http\Controllers\UserController@list');
+      
 
         Route::post('create', 'App\Http\Controllers\CVController@create');
         
 
 
+
+        Route::group(['prefix' => 'user'], function()
+        {
+            
+            Route::group(['middleware' => 'User-Account'], function()
+            {
+                
+                Route::get('letterconfirm', 'App\Http\Controllers\ConfirmController@letterConfirm');
+
+                Route::post('userconfirm', 'App\Http\Controllers\ConfirmController@userConfirm');
+            
+            });
+
+        });
+        
         
         Route::group(['prefix' => 'admin'], function()
         {
@@ -65,7 +84,12 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
                 Route::post('approve/{id}', 'App\Http\Controllers\CVController@approve');
 
+                Route::get('listuserconfirmed', 'App\Http\Controllers\ConfirmController@listUserParticipationInterview');
+            
+
+
             });
+            
             
 
 
