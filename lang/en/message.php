@@ -7,11 +7,15 @@ return [
 
     'fails' => 'Fails !!!',
 
-    'name' => 'null roi',
-
     'emailreset' => 'We have e-mailed your password reset link!!!',
 
-    'resettoken' => 'This password reset token is invalid!!!'
+    'resettoken' => 'This password reset token is invalid!!!',
+
+    'access' => 'You do not have access!!!', 
+
+    'unauthorized' =>'Unauthorized!!!'
+
+
 
 ]
 ?>

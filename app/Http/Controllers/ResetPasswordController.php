@@ -18,6 +18,8 @@ class ResetPasswordController extends Controller
      * @param  ResetPasswordRequest $request
      * @return JsonResponse
      */
+
+    //send mail resetpassword
     public function sendMail(Request $request)
     {
         $user = User::where('email', $request->email)->firstOrFail();
@@ -35,6 +37,8 @@ class ResetPasswordController extends Controller
         ]);
     }
 
+
+    //reset password
     public function reset(Request $request, $token)
     {
         $params = $request->all();
@@ -48,7 +52,7 @@ class ResetPasswordController extends Controller
         }
         $user = User::where('email', $passwordReset->email)->firstOrFail();
 
-        $updatePasswordUser = $user->update(['password' => Hash::make($params['password'])]);
+        $user->update(['password' => Hash::make($params['password'])]);
         $passwordReset->delete();
 
         return response()->json([

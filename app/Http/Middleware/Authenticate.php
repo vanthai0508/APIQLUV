@@ -17,7 +17,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return response()->json([
-                'status' => 'success',
+                'status' => __('message.success')
                 
             ]);
         }

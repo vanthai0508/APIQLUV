@@ -40,7 +40,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::get('me', 'App\Http\Controllers\AuthController@user');
       
 
-        Route::post('create', 'App\Http\Controllers\CVController@create');
+        
         
 
 
@@ -54,6 +54,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
                 Route::get('letterconfirm', 'App\Http\Controllers\ConfirmController@letterConfirm');
 
                 Route::post('userconfirm', 'App\Http\Controllers\ConfirmController@userConfirm');
+
+                Route::post('create', 'App\Http\Controllers\CVController@create');
             
             });
 

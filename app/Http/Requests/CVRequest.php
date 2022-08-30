@@ -29,7 +29,7 @@ class CVRequest extends FormRequest
             'position' => 'required',
             'phone' => 'required',
             'file' => 'file|image',
-            'id_user' => 'required' 
+            'id_user' ,
 
         ];
     }

@@ -64,21 +64,6 @@ class CVController extends Controller
     
     }
 
-    public function update($id)
-    {
-      //  $this->cv->update($request->all(), $id);
-     //   $data = $this->list();
-
-     //   return response()->json([
-      //      'status' => 'success',
-    //        'data' => $data
-      //  ]);
-
-      echo $id;
-        
-    }
-
-
     // change status
     public function done($id)
     {
@@ -100,6 +85,7 @@ class CVController extends Controller
 
     }
 
+    // Approve cv ( add confirm + sendmail)
     public function approve($id)
     {
         $data = $this->cv->valueConfirm($id);

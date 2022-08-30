@@ -1,6 +1,7 @@
 <?php
 namespace App\service;
 use App\Repositories\CVRepo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 class CVService 
 {
@@ -17,6 +18,8 @@ class CVService
             $file = $request['file'];
 
             $file->move('cv', $file->getClientOriginalName());
+
+            $request['id_user'] = Auth::user()->id;
 
             $link = $file->getClientOriginalName();
 

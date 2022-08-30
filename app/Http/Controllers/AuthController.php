@@ -19,7 +19,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed|min:7'
         ]);
  
         if ($validator->fails()) {
@@ -74,29 +74,32 @@ class AuthController extends Controller
         {
             return response()->json([
                 'status' => __('message.fails'),
-                'message' => 'Unauthorized'
+                'message' => __('message.unauthorized')
             ], 401);  
         }
- 
-        $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
- 
-        if ($request->remember_me) 
+        else
         {
-            $token->expires_at = Carbon::now()->addWeeks(1); 
+            $user = $request->user();
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->token;
+    
+            if ($request->remember_me) 
+            {
+                $token->expires_at = Carbon::now()->addWeeks(1); 
+            }
+    
+            $token->save();
+            
+            return response()->json([
+                'status' => __('message.success'),
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse(
+                    $tokenResult->token->expires_at
+                )->toDateTimeString()
+            ]);
+
         }
- 
-        $token->save();
-        
-        return response()->json([
-            'status' => __('message.success'),
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse(
-                $tokenResult->token->expires_at
-            )->toDateTimeString()
-        ]);
     }
  
 

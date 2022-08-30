@@ -24,6 +24,6 @@ class UserAccount
 
         }
 
-        return redirect('/')->with('message','Ban khong co quyen truy cap !!!');
+        return redirect('/')->with('message',__('message.access'));
     }
 }
