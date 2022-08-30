@@ -32,6 +32,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
     Route::group([ 'middleware' => 'auth:api' ], function() 
     {
+        
+        Route::get('multi-language', 'App\Http\Controllers\MultiLanguageController@index')->middleware('language');
        
         Route::get('logout', 'App\Http\Controllers\AuthController@logout');
         

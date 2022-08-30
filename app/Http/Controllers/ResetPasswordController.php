@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
         }
   
         return response()->json([
-        'message' => 'We have e-mailed your password reset link!'
+        'message' => __('message.emailreset')
         ]);
     }
 
@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
             $passwordReset->delete();
 
             return response()->json([
-                'message' => 'This password reset token is invalid.',
+                'message' => __('message.resettoken'),
             ], 422);
         }
         $user = User::where('email', $passwordReset->email)->firstOrFail();
@@ -52,7 +52,7 @@ class ResetPasswordController extends Controller
         $passwordReset->delete();
 
         return response()->json([
-            'success' => $updatePasswordUser
+            'status' => __('message.success')
             
         ]);
     }

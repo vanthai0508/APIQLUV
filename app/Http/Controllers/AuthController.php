@@ -62,7 +62,7 @@ class AuthController extends Controller
         if ($validator->fails()) 
         {
             return response()->json([
-                'status' => 'fails',
+                'status' => __('message.fails'),
                 'message' => $validator->errors()->first(),
                 'errors' => $validator->errors()->toArray(),
             ]);
@@ -73,7 +73,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) 
         {
             return response()->json([
-                'status' => 'fails',
+                'status' => __('message.fails'),
                 'message' => 'Unauthorized'
             ], 401);  
         }
@@ -90,7 +90,7 @@ class AuthController extends Controller
         $token->save();
         
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(
@@ -106,7 +106,7 @@ class AuthController extends Controller
     {
         $request->user()->token()->revoke();
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
         ]);
         
     }
@@ -116,8 +116,4 @@ class AuthController extends Controller
         return response()->json($request->user());
     }
 
-    public function list()
-    {
-        echo "thai";
-    }
 }

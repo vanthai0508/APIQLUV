@@ -22,7 +22,7 @@ class ConfirmController extends Controller
         $this->confirm->create($request->all());
 
         return response()->json([
-            'status' => 'success'
+            'status' => __('message.success'),
         ]);
    
     }
@@ -33,7 +33,7 @@ class ConfirmController extends Controller
         $data = $this->confirm->list();
 
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     }
@@ -44,7 +44,7 @@ class ConfirmController extends Controller
         $data = $this->confirm->letterConfirm();
 
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     }
@@ -56,7 +56,7 @@ class ConfirmController extends Controller
         $this->confirm->userConfirm();
 
         return response()->json([
-            'status' => 'success'
+            'status' => __('message.success'),
         ]);
     }
 
@@ -67,7 +67,7 @@ class ConfirmController extends Controller
         $data = $this->confirm->listUserParticipationInterview();
 
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     }

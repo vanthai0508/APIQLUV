@@ -36,12 +36,14 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            
         ],
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+           
         ],
     ];
 
@@ -66,5 +68,6 @@ class Kernel extends HttpKernel
         'User-Account' => \App\Http\Middleware\UserAccount::class,
         'locale' => \App\Http\Middleware\Locale::class,
         'User-Account-Admin' => \App\Http\Middleware\UserAccountAdmin::class,
+        'language' => \App\Http\Middleware\LocalizationMiddleware::class,
     ];
 }

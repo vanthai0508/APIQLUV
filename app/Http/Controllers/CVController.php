@@ -37,7 +37,7 @@ class CVController extends Controller
 
     
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $request->all()
         ]);
     }
@@ -47,7 +47,7 @@ class CVController extends Controller
     {
         $data = $this->cv->list();
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     }
@@ -58,7 +58,7 @@ class CVController extends Controller
        $data = $this->cv->find($id);
 
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     
@@ -85,7 +85,7 @@ class CVController extends Controller
         $this->cv->done($id);
         
         return response()->json([
-            'status' => 'success'
+            'status' => __('message.success'),
         ]);
     }
 
@@ -95,7 +95,7 @@ class CVController extends Controller
         $this->cv->reject($id);
 
         return response()->json([
-            'status' => 'success'
+            'status' => __('message.success'),
         ]);
 
     }
@@ -106,7 +106,7 @@ class CVController extends Controller
         $this->cv->sendMail($id, $data['dateinterview']);
         $this->confirm->create($data);
         return response()->json([
-            'status' => 'success',
+            'status' => __('message.success'),
             'data' => $data
         ]);
     }

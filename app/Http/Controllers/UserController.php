@@ -19,18 +19,12 @@ class UserController extends Controller
     public function list(Request $request)
     {
       
-
-      
         return response()->json($request->user()->name);
     }
 
     public function update(Request $request , $id)
     {
-        // $this->user->update($request, $id);
-        
-        // return reponse()->json([
-        //     'status' => 'succes',
-        // ]);
+
     }
 
     public function check()
