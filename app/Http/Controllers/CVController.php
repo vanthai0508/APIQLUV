@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\service\CVService;
 use App\Http\Requests\CVRequest;
+use App\service\ConfirmService;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -12,9 +13,11 @@ class CVController extends Controller
 {
 
     private $cv;
-    public function __construct(CVService $cv)
+    private $confirm;
+    public function __construct(CVService $cv, ConfirmService $confirm)
     {
         $this->cv = $cv;
+        $this->confirm = $confirm;
     }
     
 
@@ -95,6 +98,17 @@ class CVController extends Controller
             'status' => 'success'
         ]);
 
+    }
+
+    public function approve($id)
+    {
+        $data = $this->cv->valueConfirm($id);
+        $this->cv->sendMail($id, $data['dateinterview']);
+        $this->confirm->create($data);
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
     }
 
  

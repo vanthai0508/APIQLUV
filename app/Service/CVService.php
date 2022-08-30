@@ -62,12 +62,30 @@ class CVService
     {
         
         $user = $this->getUser($id);
-        Mail::send('mail', array('name'=>$user->name,'email'=>$user->email), function($message){
-	        $message->to('tranthai22756@gmail.com', 'User')->subject('Feedback!');
+        Mail::send('mail', array('name'=>$user->name,'email'=>$user->email), function ($message) use ($user){
+	        $message->to($user->email, 'User')->subject('Feedback From MOR!');
 	    });
 
         $this->done($id);
         
+    }
+
+    // value for confirm
+    public function valueConfirm($id)
+    {
+        return $this->repo->valueConfirm($id);
+    }
+
+    // send mail approve and change status
+    public function sendMail($id, $dateInterview)
+    {
+        $user = $this->getUser($id);
+        
+        Mail::send('mailApprove', array('name'=>$user->name, 'email'=>$user->email, 'dateinterview' => $dateInterview), function ($message) use ($user){
+	        $message->to( $user->email , 'User')->subject('Feedback From MOR!');
+	    });
+
+        $this->done($id);
     }
 }
 ?>

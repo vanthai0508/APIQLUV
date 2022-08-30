@@ -13,6 +13,11 @@ class ConfirmRepo extends EloquentRepository
     {
 
     }
+
+    // public function done($id)
+    // {
+
+    // }
 }
 
 

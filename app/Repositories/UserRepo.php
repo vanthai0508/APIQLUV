@@ -15,6 +15,11 @@ class UserRepo extends EloquentRepository
     {
         
     }
+
+    // public function done($id)
+    // {
+
+    // }
     
 }
 

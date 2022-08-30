@@ -7,7 +7,7 @@ interface EloquentInterface
 
     public function create(array $data);
 
-  //  public function done($id);
+    public function done($id);
 
     public function update(array $data, $id);
 

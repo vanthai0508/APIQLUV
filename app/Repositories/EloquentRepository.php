@@ -32,11 +32,18 @@ abstract class EloquentRepository implements EloquentInterface
     //     return $this->model->update($data)->where('id', $id);
     // }
 
+    //change status
+    public function done($id)
+    {
+        $this->model->where('id', $id)->update(['status' => 0]);
+    }
+
     public function delete($id)
     {
        return $this->model->destroy($id);
     }
 
+    //find follow id
     public function find($id)
     {
         $result = $this->model->find($id);

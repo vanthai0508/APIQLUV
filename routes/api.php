@@ -41,21 +41,32 @@ Route::group([ 'prefix' => 'auth' ], function ()
         
         Route::group(['prefix' => 'admin'], function()
         {
-            Route::get('list', 'App\Http\Controllers\CVController@list');
 
-            Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
+            Route::group(['middleware' => 'User-Account-Admin'], function()
+            {
 
-            Route::post('done/{id}', 'App\Http\Controllers\CVController@done');
+                Route::get('list', 'App\Http\Controllers\CVController@list');
 
-            Route::get('getuser/{id}', 'App\Http\Controllers\CVController@getUser');
+                Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
 
-            Route::get('reject/{id}', 'App\Http\Controllers\CVController@reject');
+                Route::post('done/{id}', 'App\Http\Controllers\CVController@done');
 
-            Route::post('createconfirm', 'App\Http\Controllers\ConfirmController@create');
+                Route::get('getuser/{id}', 'App\Http\Controllers\CVController@getUser');
 
-            Route::get('listconfirm', 'App\Http\Controllers\ConfirmController@list');
+                Route::get('reject/{id}', 'App\Http\Controllers\CVController@reject');
 
-            Route::get('check', 'App\Http\Controllers\UserController@check');
+                Route::post('createconfirm', 'App\Http\Controllers\ConfirmController@create');
+
+                Route::get('listconfirm', 'App\Http\Controllers\ConfirmController@list');
+
+                Route::get('check', 'App\Http\Controllers\UserController@check');
+
+                Route::get('valueconfirm/{id}', 'App\Http\Controllers\CVController@valueConfirm');
+
+                Route::post('approve/{id}', 'App\Http\Controllers\CVController@approve');
+
+            });
+            
 
 
         });

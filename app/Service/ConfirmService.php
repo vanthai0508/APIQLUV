@@ -28,5 +28,10 @@ class ConfirmService
     {
         return  $this->repo->list();
     }
+
+    public function done($id)
+    {
+        $this->repo->done($id);
+    }
 }
 ?>
