@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
 
-    // ham dang ky
+    // register
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -50,7 +50,7 @@ class AuthController extends Controller
  
     }
     
-    //ham dang nhap
+    //login
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -104,7 +104,7 @@ class AuthController extends Controller
  
 
     
-    // ham dang xuat
+    // logout
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
