@@ -106,5 +106,5 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
-
+    //phpcs --standard=PSR12 App\Http\Controllers\AuthController.php
 }
