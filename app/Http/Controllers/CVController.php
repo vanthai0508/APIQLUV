@@ -8,10 +8,9 @@ use App\Http\Requests\CVRequest;
 use App\service\ConfirmService;
 use Illuminate\Support\Facades\Auth;
 
-
+/** CV controller */
 class CVController extends Controller
 {
-
     private $cv;
     private $confirm;
     public function __construct(CVService $cv, ConfirmService $confirm)
@@ -19,30 +18,23 @@ class CVController extends Controller
         $this->cv = $cv;
         $this->confirm = $confirm;
     }
-    
-
-    //get user follow cv
+    /**get user follow cv*/
     public function getUser($id)
     {
         $data = $this->cv->getUser($id);
 
         echo $data;
     }
-
-    //create cv
+    /**create cv*/
     public function create(CVRequest $request)
     {
-        
         $this->cv->create($request->all());
-
-    
         return response()->json([
             'status' => __('message.success'),
             'data' => $request->all()
         ]);
     }
-
-    // list cv
+    /** list cv */
     public function list()
     {
         $data = $this->cv->list();
@@ -51,30 +43,24 @@ class CVController extends Controller
             'data' => $data
         ]);
     }
-
-    // find cv
+    /**find cv */
     public function find($id)
     {
-       $data = $this->cv->find($id);
-
+        $data = $this->cv->find($id);
         return response()->json([
             'status' => __('message.success'),
             'data' => $data
         ]);
-    
     }
-
-    // change status
+    /** change status */
     public function done($id)
     {
         $this->cv->done($id);
-        
         return response()->json([
             'status' => __('message.success'),
         ]);
     }
-
-    // Reject CV
+    /** Reject CV */
     public function reject($id)
     {
         $this->cv->reject($id);
@@ -82,9 +68,7 @@ class CVController extends Controller
         return response()->json([
             'status' => __('message.success'),
         ]);
-
     }
-
     // Approve cv ( add confirm + sendmail)
     public function approve($id)
     {
@@ -96,7 +80,4 @@ class CVController extends Controller
             'data' => $data
         ]);
     }
-
- 
-    
 }
