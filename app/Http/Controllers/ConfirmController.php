@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\service\ConfirmService;
 use App\Http\Requests\ConfirmRequest;
 
-
 class ConfirmController extends Controller
 {
     protected $confirm;
@@ -24,14 +23,11 @@ class ConfirmController extends Controller
         return response()->json([
             'status' => __('message.success'),
         ]);
-   
     }
-
     //list confirm
     public function list()
     {
         $data = $this->confirm->list();
-
         return response()->json([
             'status' => __('message.success'),
             'data' => $data
