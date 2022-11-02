@@ -60,7 +60,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
             });
 
         });
-        
+        //test
         
         Route::group(['prefix' => 'admin'], function()
         {
