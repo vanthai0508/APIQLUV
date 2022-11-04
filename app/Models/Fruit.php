@@ -15,6 +15,7 @@ class Fruit extends Model
         'price',
         'description',
         'brand',
+        'amount',
         'created_at',
         'updated_at'
     ];

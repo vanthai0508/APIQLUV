@@ -26,4 +26,9 @@ class FruitService
          $data['image_url'] = 'public/Fruit/'.$link;
         return $this->fruitRepository->create($data);
     }
+
+    public function update(array $data)
+    {
+        return $this->fruitRepository->update($data['id'], $data);
+    }
 }

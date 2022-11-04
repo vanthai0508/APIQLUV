@@ -28,7 +28,8 @@ class CreateFruitRequest extends FormRequest
             'image_url' => "file|image",
             'price' => "required",
             'description' => "required",
-            'brand' => "required"
+            'brand' => "required",
+            'amount' => "required"
         ];
     }
 }

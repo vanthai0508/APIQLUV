@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('price')->nullable();
             $table->string('description')->nullable();
             $table->string('brand')->nullable();
+            $table->integer('amount')->nullable();
             $table->timestamps();
         });
     }

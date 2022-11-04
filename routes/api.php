@@ -68,6 +68,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
             // Route::group(['middleware' => 'User-Account-Admin'], function()
             // {
                 Route::post('createFruit', 'App\Http\Controllers\FruitController@create');
+
+                Route::post('updateFruit', 'App\Http\Controllers\FruitController@update');
                 // Route::get('list', 'App\Http\Controllers\CVController@list');
 
                 // Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
