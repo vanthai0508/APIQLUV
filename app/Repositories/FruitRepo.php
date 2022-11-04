@@ -1,12 +1,12 @@
 <?php
-namespace App\Repositories;
+// namespace App\Repositories;
 
-use App\Models\Fruit;
+// use App\Models\Fruit;
 
-class FruitRepo extends EloquentRepository
-{
-    public function getModel()
-    {
-        return Fruit::class;
-    }
-}
+// class FruitRepo extends EloquentRepository
+// {
+//     public function getModel()
+//     {
+//         return Fruit::class;
+//     }
+// }

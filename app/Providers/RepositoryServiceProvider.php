@@ -24,7 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register():void
     {
         //
     }
@@ -34,7 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(FruitRepositoryInterface::class, FruitRepository::class);

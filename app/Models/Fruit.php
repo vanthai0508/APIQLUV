@@ -13,7 +13,7 @@ class Fruit extends Model
         'fruit_name',
         'image_url',
         'price',
-        'decription',
+        'description',
         'brand',
         'created_at',
         'updated_at'

@@ -65,9 +65,9 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::group(['prefix' => 'admin'], function()
         {
 
-            Route::group(['middleware' => 'User-Account-Admin'], function()
-            {
-
+            // Route::group(['middleware' => 'User-Account-Admin'], function()
+            // {
+                Route::post('createFruit', 'App\Http\Controllers\FruitController@create');
                 // Route::get('list', 'App\Http\Controllers\CVController@list');
 
                 // Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
@@ -92,7 +92,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
             
 
 
-            });
+            // });
             
             
 
