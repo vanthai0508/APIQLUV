@@ -33,4 +33,14 @@ class FruitController extends Controller
             'data' => $data->all()
         ]);
     }
+    
+    public function getAll()
+    {
+        $data = $this->fruitService->getAll();
+        return response()->json([
+            'status' => __('message.success'),
+            'data' => $data
+        ]);
+    }
+    
 }

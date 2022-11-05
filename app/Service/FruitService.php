@@ -31,4 +31,9 @@ class FruitService
     {
         return $this->fruitRepository->update($data['id'], $data);
     }
+
+    public function getAll()
+    {
+        return $this->fruitRepository->getAll();
+    }
 }
