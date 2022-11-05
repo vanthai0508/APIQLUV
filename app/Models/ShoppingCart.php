@@ -16,5 +16,10 @@ class ShoppingCart extends Model
         'updated_at'
     ];
 
+    public function ShoppingCartDetail()
+    {
+        return $this->hasMany(ShoppingCartDetail::class);
+    }
+
 
 }

@@ -104,6 +104,10 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::group(['prefix' => 'all'], function()
         {
             Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+            
+            Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
+
+            Route::post('addFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@addFruitCart');
         });
 
         

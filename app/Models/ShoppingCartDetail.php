@@ -17,5 +17,8 @@ class ShoppingCartDetail extends Model
         'updated_at'
     ];
 
-
+    public function ShoppingCart()
+    {
+        return $this->belongsTo(ShoppingCart::class, 'shopping_cart_id', 'id');
+    }
 }
