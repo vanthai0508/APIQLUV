@@ -31,7 +31,8 @@ class ShoppingCartService
             'user_id' => Auth::user()->id,
             'date' => date('y-m-d h:i:s'),
             'address' => $data['address'],
-            'total_bill' => 0
+            'total_bill' => 0,
+            'status' => 2
         ]);
         $shoppingCart = $this->shoppingCartRepository->create([
             'user_id' => Auth::user()->id,

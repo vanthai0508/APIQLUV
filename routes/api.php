@@ -108,11 +108,11 @@ Route::group([ 'prefix' => 'auth' ], function ()
             Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
 
             Route::post('addFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@addFruitCart');
+
+            Route::post('createOrderDetail', 'App\Http\Controllers\OrderDetailController@create');
+
+            Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
         });
-
-        
-
-        
     });
 });
 

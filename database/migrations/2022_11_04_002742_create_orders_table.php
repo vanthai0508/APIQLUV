@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('date')->nullable();
             $table->string('address')->nullable();
             $table->double('total_bill')->nullable();
+            $table->integer('status');
             $table->timestamps();
         });
     }

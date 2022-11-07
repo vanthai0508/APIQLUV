@@ -19,6 +19,9 @@ class Fruit extends Model
         'created_at',
         'updated_at'
     ];
-
+    public function OrderDetail()
+    {
+        return $this->hasOne(OrderDetail::class);
+    }
 
 }

@@ -14,9 +14,13 @@ class Order extends Model
         'date',
         'address',
         'total_bill',
+        'status',
         'created_at',
         'updated_at'
     ];
 
-
+    public function OrderDetail()
+    {
+        return $this->hasOne(OrderDetail::class);
+    }
 }

@@ -17,7 +17,6 @@ class FruitController extends Controller
 
     public function create(Request $data)
     {
-        dd($data);
         $this->fruitService->create($data->all());
         return response()->json([
             'status' => __('message.success'),

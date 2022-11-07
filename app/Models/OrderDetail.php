@@ -16,6 +16,15 @@ class OrderDetail extends Model
         'created_at',
         'updated_at'
     ];
-
+    
+    public function Order()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
+    
+    public function Fruit()
+    {
+        return $this->belongsTo(Fruit::class, 'fruit_id', 'id');
+    }
 
 }
