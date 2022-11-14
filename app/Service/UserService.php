@@ -2,15 +2,16 @@
 namespace App\service;
 
 use App\Repositories\UserRepo;
+use App\Repositories\UserRepositoryInterface;
 use Exception;
 
 class UserService
 {
-    public $repo;
+    protected $userRepository;
 
-    public function __construct(UserRepo $repo)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->repo = $repo;
+        $this->userRepository = $userRepository;
     }
 
 
@@ -18,6 +19,24 @@ class UserService
     {
         try {
             return $this->repo->list();
+        } catch(Exception $e) {
+            return null;
+        }
+    }
+
+    public function update(array $data)
+    {
+        try {
+            return $this->userRepository->update($data['id'], $data);
+        } catch(Exception $e) {
+            return null;
+        }
+    }
+
+    public function getAllUser()
+    {
+        try {
+            return $this->userRepository->getAll();
         } catch(Exception $e) {
             return null;
         }

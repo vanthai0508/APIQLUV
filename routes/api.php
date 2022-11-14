@@ -84,7 +84,10 @@ Route::group([ 'prefix' => 'auth' ], function ()
                 Route::post('updateFruit', 'App\Http\Controllers\FruitController@update');
 
                 Route::delete('deleteFruit/{id}', 'App\Http\Controllers\FruitController@delete');
-            
+                
+                Route::get('getAllUser', 'App\Http\Controllers\UserController@getAllUser');
+
+                Route::post('updateUser', 'App\Http\Controllers\UserController@updateUser');
             });
         });
     });
