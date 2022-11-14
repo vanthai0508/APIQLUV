@@ -40,80 +40,52 @@ Route::group([ 'prefix' => 'auth' ], function ()
         Route::get('me', 'App\Http\Controllers\AuthController@user');
       
 
-        
-        
-
-
-
         Route::group(['prefix' => 'user'], function()
         {
             
             Route::group(['middleware' => 'User-Account'], function()
             {
                 
-                // Route::get('letterconfirm', 'App\Http\Controllers\ConfirmController@letterConfirm');
+                Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+            
+                Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
 
-                // Route::post('userconfirm', 'App\Http\Controllers\ConfirmController@userConfirm');
+                Route::post('addFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@addFruitCart');
 
-                // Route::post('create', 'App\Http\Controllers\CVController@create');
+                Route::post('createOrderDetail', 'App\Http\Controllers\OrderDetailController@create');
+
+                Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
+
+                Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
             
             });
 
         });
-        //test
         
         Route::group(['prefix' => 'admin'], function()
         {
+            Route::group(['middleware' => 'User-Account-Admin'], function()
+            {
+                
+                Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+            
+                Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
 
-            // Route::group(['middleware' => 'User-Account-Admin'], function()
-            // {
+                Route::post('addFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@addFruitCart');
+
+                Route::post('createOrderDetail', 'App\Http\Controllers\OrderDetailController@create');
+
+                Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
+
+                Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
+
                 Route::post('createFruit', 'App\Http\Controllers\FruitController@create');
 
                 Route::post('updateFruit', 'App\Http\Controllers\FruitController@update');
-                // Route::get('list', 'App\Http\Controllers\CVController@list');
 
-                // Route::get('find/{id}', 'App\Http\Controllers\CVController@find');
-
-                // Route::post('done/{id}', 'App\Http\Controllers\CVController@done');
-
-                // Route::get('getuser/{id}', 'App\Http\Controllers\CVController@getUser');
-
-                // Route::get('reject/{id}', 'App\Http\Controllers\CVController@reject');
-
-                // Route::post('createconfirm', 'App\Http\Controllers\ConfirmController@create');
-
-                // Route::get('listconfirm', 'App\Http\Controllers\ConfirmController@list');
-
-                // Route::get('check', 'App\Http\Controllers\UserController@check');
-
-                // Route::get('valueconfirm/{id}', 'App\Http\Controllers\CVController@valueConfirm');
-
-                // Route::post('approve/{id}', 'App\Http\Controllers\CVController@approve');
-
-                // Route::get('listuserconfirmed', 'App\Http\Controllers\ConfirmController@listUserParticipationInterview');
+                Route::delete('deleteFruit/{id}', 'App\Http\Controllers\FruitController@delete');
             
-
-
-            // });
-            
-            
-
-
-        });
-
-        Route::group(['prefix' => 'all'], function()
-        {
-            Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
-            
-            Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
-
-            Route::post('addFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@addFruitCart');
-
-            Route::post('createOrderDetail', 'App\Http\Controllers\OrderDetailController@create');
-
-            Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
-
-            Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
+            });
         });
     });
 });

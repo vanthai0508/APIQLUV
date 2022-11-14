@@ -59,4 +59,13 @@ class FruitService
             return null;
         }
     }
+
+    public function delete(int $id)
+    {
+        try{
+            return $this->fruitRepository->delete($id);
+        } catch(Exception $e) {
+            return null;
+        }
+    }
 }

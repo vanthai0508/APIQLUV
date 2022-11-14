@@ -72,6 +72,19 @@ class FruitController extends Controller
                 'status' => __('message.fails')
             ]);
         }
+    }
+
+    public function delete($id)
+    {
+        if($data = $this->fruitService->delete($id)) {
+            return response()->json([
+                'status' => __('message.success')
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
         
     }
     
