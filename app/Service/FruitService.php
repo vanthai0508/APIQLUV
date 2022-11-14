@@ -23,7 +23,7 @@ class FruitService
 
         $link = $file->getClientOriginalName();
 
-         $data['image_url'] = 'public/Fruit/'.$link;
+        $data['image_url'] = 'public/Fruit/'.$link;
         return $this->fruitRepository->create($data);
     }
 
@@ -35,5 +35,10 @@ class FruitService
     public function getAll()
     {
         return $this->fruitRepository->getAll();
+    }
+
+    public function getFruitFollowId(int $id)
+    {
+        return $this->fruitRepository->find($id);
     }
 }

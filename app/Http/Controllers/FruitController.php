@@ -41,5 +41,14 @@ class FruitController extends Controller
             'data' => $data
         ]);
     }
+
+    public function getFruitFollowId($id)
+    {
+        $data = $this->fruitService->getFruitFollowId($id);
+        return response()->json([
+            'status' => __('message.success'),
+            'data' => $data
+        ]);
+    }
     
 }

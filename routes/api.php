@@ -112,6 +112,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
             Route::post('createOrderDetail', 'App\Http\Controllers\OrderDetailController@create');
 
             Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
+
+            Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
         });
     });
 });
