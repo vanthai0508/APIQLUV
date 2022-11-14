@@ -6,6 +6,7 @@ use App\Repositories\OrderRepositoryInterface;
 use App\Repositories\ShoppingCartRepositoryInterface;
 use App\Repositories\ShoppingCartDetailRepositoryInterface;
 use App\Repositories\FruitRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class ShoppingCartDetailService
@@ -30,19 +31,23 @@ class ShoppingCartDetailService
 
     public function addFruitCart($data)
     {
-        $this->shoppingCartDetailRepository->create([
-            'shopping_cart_id' => $data['shopping_cart_id'],
-            'fruit_id' => $data['fruit_id'],
-            'quantity' => $data['quantity']
-        ]);
-        $fruit = $this->fruitRepository->find($data['fruit_id']);
-        $shoppingCart = $this->shoppingCartRepository->find($data['shopping_cart_id']);
-        $order = $this->orderRepository->find($shoppingCart->order_id);
-        $total = $fruit->price * $data['quantity'];
-        $result = $order->total_bill + $total;
-        $this->orderRepository->update($order->id,[
-            'total_bill' => $result
-        ]);
-        return $shoppingCart->ShoppingCartDetail;
+        try {
+            $this->shoppingCartDetailRepository->create([
+                'shopping_cart_id' => $data['shopping_cart_id'],
+                'fruit_id' => $data['fruit_id'],
+                'quantity' => $data['quantity']
+            ]);
+            $fruit = $this->fruitRepository->find($data['fruit_id']);
+            $shoppingCart = $this->shoppingCartRepository->find($data['shopping_cart_id']);
+            $order = $this->orderRepository->find($shoppingCart->order_id);
+            $total = $fruit->price * $data['quantity'];
+            $result = $order->total_bill + $total;
+            $this->orderRepository->update($order->id,[
+                'total_bill' => $result
+            ]);
+            return $shoppingCart->ShoppingCartDetail;
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }

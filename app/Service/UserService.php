@@ -2,6 +2,7 @@
 namespace App\service;
 
 use App\Repositories\UserRepo;
+use Exception;
 
 class UserService
 {
@@ -12,10 +13,14 @@ class UserService
         $this->repo = $repo;
     }
 
-    //list user
+
     public function list()
     {
-        return $this->repo->list();
+        try {
+            return $this->repo->list();
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }
 

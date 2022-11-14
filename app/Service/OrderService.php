@@ -3,6 +3,7 @@ namespace App\Service;
 
 use App\Repositories\Eloquent\ShoppingCartDetailRepository;
 use App\Repositories\OrderRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class OrderService
@@ -19,6 +20,10 @@ class OrderService
     
     public function update(array $data)
     {
-        return $this->orderRepository->update($data['id'], $data);
+        try {
+            return $this->orderRepository->update($data['id'], $data);
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 use App\Repositories\FruitRepositoryInterface;
+use Exception;
 
 class FruitService
 {
@@ -15,30 +16,47 @@ class FruitService
 
     public function create(array $data)
     {
-        $file = $data['image_url'];
+        try{
+            
+            $file = $data['image_url'];
 
-        $file->move('fruit', $file->getClientOriginalName());
+            $file->move('fruit', $file->getClientOriginalName());
 
-        //  $request['id_user'] = Auth::user()->id;
+            //  $request['id_user'] = Auth::user()->id;
 
-        $link = $file->getClientOriginalName();
+            $link = $file->getClientOriginalName();
 
-        $data['image_url'] = 'public/Fruit/'.$link;
-        return $this->fruitRepository->create($data);
+            $data['image_url'] = 'public/Fruit/'.$link;
+            return $this->fruitRepository->create($data);
+        } catch(Exception $e) {
+            return null;
+        }
     }
 
     public function update(array $data)
     {
-        return $this->fruitRepository->update($data['id'], $data);
+        try{
+            return $this->fruitRepository->update($data['id'], $data);
+        } catch(Exception $e) {
+            return null;
+        }
     }
 
     public function getAll()
-    {
-        return $this->fruitRepository->getAll();
+    {   
+        try{
+            return $this->fruitRepository->getAll();
+        } catch(Exception $e) {
+            return null;
+        }
     }
 
     public function getFruitFollowId(int $id)
     {
-        return $this->fruitRepository->find($id);
+        try{
+            return $this->fruitRepository->find($id);
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }

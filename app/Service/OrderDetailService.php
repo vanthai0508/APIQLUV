@@ -5,6 +5,7 @@ use App\Repositories\Eloquent\ShoppingCartDetailRepository;
 use App\Repositories\OrderRepositoryInterface;
 use App\Repositories\FruitRepositoryInterface;
 use App\Repositories\OrderDetailRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class OrderDetailService
@@ -26,19 +27,23 @@ class OrderDetailService
 
     public function create($data)
     {
-        $fruit= $this->fruitRepository->find($data['fruit_id']);
-        $order = $this->orderRepository->create([
-            'user_id' => Auth::user()->id,
-            'date' => date('y-m-d h:i:s'),
-            'address' => $data['address'],
-            'total_bill' => $fruit->price * $data['quantity'],
-            'status' => 1
-        ]);
-        $orderDetail = $this->orderDetailRepository->create([
-            'fruit_id' => $data['fruit_id'],
-            'quantity' => $data['quantity'],
-            'order_id' => $order->id
-        ]);
-        return $order;
+        try {
+            $fruit= $this->fruitRepository->find($data['fruit_id']);
+            $order = $this->orderRepository->create([
+                'user_id' => Auth::user()->id,
+                'date' => date('y-m-d h:i:s'),
+                'address' => $data['address'],
+                'total_bill' => $fruit->price * $data['quantity'],
+                'status' => 1
+            ]);
+            $orderDetail = $this->orderDetailRepository->create([
+                'fruit_id' => $data['fruit_id'],
+                'quantity' => $data['quantity'],
+                'order_id' => $order->id
+            ]);
+            return $order;
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }

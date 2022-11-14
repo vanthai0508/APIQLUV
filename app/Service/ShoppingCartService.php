@@ -5,6 +5,7 @@ use App\Repositories\Eloquent\ShoppingCartDetailRepository;
 use App\Repositories\OrderRepositoryInterface;
 use App\Repositories\ShoppingCartRepositoryInterface;
 use App\Repositories\ShoppingCartDetailRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class ShoppingCartService
@@ -26,19 +27,22 @@ class ShoppingCartService
 
     public function create(array $data)
     {
-
-        $order = $this->orderRepository->create([
-            'user_id' => Auth::user()->id,
-            'date' => date('y-m-d h:i:s'),
-            'address' => $data['address'],
-            'total_bill' => 0,
-            'status' => 2
-        ]);
-        $shoppingCart = $this->shoppingCartRepository->create([
-            'user_id' => Auth::user()->id,
-            'order_id' => $order->id
-        ]);
-        return $shoppingCart;
+        try {
+            $order = $this->orderRepository->create([
+                'user_id' => Auth::user()->id,
+                'date' => date('y-m-d h:i:s'),
+                'address' => $data['address'],
+                'total_bill' => 0,
+                'status' => 2
+            ]);
+            $shoppingCart = $this->shoppingCartRepository->create([
+                'user_id' => Auth::user()->id,
+                'order_id' => $order->id
+            ]);
+            return $shoppingCart;
+        } catch(Exception $e) {
+            return null;
+        }
         
     }
 }
