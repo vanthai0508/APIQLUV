@@ -17,38 +17,62 @@ class FruitController extends Controller
 
     public function create(Request $data)
     {
-        $this->fruitService->create($data->all());
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $data->all()
-        ]);
+        if($this->fruitService->create($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $data->all()
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails'),
+            ]);
+        }
+        
     }
 
     public function update(Request $data)
     {
-        $this->fruitService->update($data->all());
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $data->all()
-        ]);
+        if($this->fruitService->update($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $data->all()
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
     
     public function getAll()
     {
-        $data = $this->fruitService->getAll();
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $data
-        ]);
+        if($data = $this->fruitService->getAll()) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $data
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
 
     public function getFruitFollowId($id)
     {
-        $data = $this->fruitService->getFruitFollowId($id);
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $data
-        ]);
+        if($data = $this->fruitService->getFruitFollowId($id)) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $data
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
     
 }

@@ -18,10 +18,16 @@ class ShoppingCartDetailController extends Controller
 
     public function addFruitCart(Request $data)
     {
-        $result = $this->shoppingCartDetail->addFruitCart($data->all());
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $result
-        ]);
+        if($result = $this->shoppingCartDetail->addFruitCart($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
 }

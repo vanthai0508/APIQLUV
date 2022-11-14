@@ -17,10 +17,16 @@ class OrderDetailController extends Controller
 
     public function create(Request $data)
     {
-        $result = $this->orderDetailService->create($data);
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $result
-        ]);
+        if($result = $this->orderDetailService->create($data)) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
 }

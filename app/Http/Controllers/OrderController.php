@@ -17,10 +17,16 @@ class OrderController extends Controller
 
     public function update(Request $data)
     {
-        $result = $this->orderService->update($data->all());
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $result
-        ]);
+        if($result = $this->orderService->update($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails'),
+            ]);
+        }
+        
     }
 }

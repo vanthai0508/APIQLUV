@@ -18,11 +18,17 @@ class ShoppingCartController extends Controller
 
     public function create(Request $data)
     {
-        $result = $this->shoppingCartService->create($data->all());
-        return response()->json([
-            'status' => __('message.success'),
-            'data' => $result
-        ]);
+        if($result = $this->shoppingCartService->create($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
     }
     
 }
