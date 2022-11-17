@@ -21,7 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([ 'prefix' => 'auth' ], function () 
 {
-
+    Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+    
     Route::post('login', 'App\Http\Controllers\AuthController@login');
 
     Route::post('signup', 'App\Http\Controllers\AuthController@signup');
