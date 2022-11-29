@@ -21,4 +21,9 @@ class ShoppingCartDetail extends Model
     {
         return $this->belongsTo(ShoppingCart::class, 'shopping_cart_id', 'id');
     }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

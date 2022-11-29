@@ -20,6 +20,15 @@ class ShoppingCart extends Model
     {
         return $this->hasMany(ShoppingCartDetail::class);
     }
-
-
+    
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    
+    public function Order()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
+    
 }

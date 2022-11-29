@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\cv', 'id_user', 'id');
     }
+
+    public function ShoppingCart()
+    {
+        return $this->hasMany(ShoppingCart::class);
+    }
+
+    public function Order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

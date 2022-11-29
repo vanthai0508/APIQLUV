@@ -23,4 +23,11 @@ class Order extends Model
     {
         return $this->hasOne(OrderDetail::class);
     }
+
+    public function ShoppingCart()
+    {
+        return $this->hasOne(ShoppingCart::class);
+    }
+
+    
 }
