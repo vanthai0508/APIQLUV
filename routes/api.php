@@ -46,6 +46,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
             
             Route::group(['middleware' => 'User-Account'], function()
             {
+                Route::get('listFruitOfCart/{id}', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
             

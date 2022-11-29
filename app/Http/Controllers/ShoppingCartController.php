@@ -30,5 +30,20 @@ class ShoppingCartController extends Controller
         }
         
     }
+
+    public function listFruitOfCart($id)
+    {
+        if($result = $this->shoppingCartService->listFruitOfCart($id)) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+        
+    }
     
 }

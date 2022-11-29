@@ -61,6 +61,11 @@ class ShoppingCartDetailService
                 return $shoppingCart->ShoppingCartDetail;
             } else {
                 $shoppingCart = $result->shoppingCart;
+                $this->shoppingCartDetailRepository->create([
+                    'shopping_cart_id' => $shoppingCart['id'],
+                    'fruit_id' => $data['fruit_id'],
+                    'quantity' => $data['quantity']
+                    ]);
                 $fruit = $this->fruitRepository->find($data['fruit_id']);
                 $order = $this->orderRepository->find($shoppingCart->order_id);
                 $total = $fruit->price * $data['quantity'];

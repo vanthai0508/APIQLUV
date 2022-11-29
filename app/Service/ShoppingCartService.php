@@ -43,6 +43,18 @@ class ShoppingCartService
         } catch(Exception $e) {
             return null;
         }
+    }
+
+    public function listFruitOfCart($id)
+    {
+        try {
+            $shoppingCart = $this->shoppingCartRepository->find($id);
+            return $shoppingCart->shoppingCartDetail;
+        } catch(Exception $e) {
+            return null;
+        }
+        
         
     }
+
 }
