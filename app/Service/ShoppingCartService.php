@@ -31,7 +31,7 @@ class ShoppingCartService
             $order = $this->orderRepository->create([
                 'user_id' => Auth::user()->id,
                 'date' => date('y-m-d h:i:s'),
-                'address' => $data['address'],
+                'address' => null,
                 'total_bill' => 0,
                 'status' => 2
             ]);

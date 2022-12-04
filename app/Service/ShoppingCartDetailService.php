@@ -74,11 +74,34 @@ class ShoppingCartDetailService
                     'total_bill' => $result
                 ]);
                 return $shoppingCart->ShoppingCartDetail;
-                
             }
            
         } catch(Exception $e) {
             return null;
         }
+    }
+    
+    public function updateFruitCart($data)
+    {
+        $cart = $this->shoppingCartRepository->find($data['id']);
+        $listFruitOfCart = $cart->shoppingCartDetail;
+        $result = null;
+        foreach($listFruitOfCart as $shoppingCartDetail) {
+            if($shoppingCartDetail['fruit_id'] == $data['fruit_id']) {
+                $result = $shoppingCartDetail;
+                $this->shoppingCartDetailRepository->update($shoppingCartDetail['id'], [
+                    'quantity' => $data['quantity']
+                ]);
+                break;
+            }
+        }
+        $fruit = $this->fruitRepository->find($data['fruit_id']);
+        $order = $this->orderRepository->find($cart['order_id']);
+        $total = $fruit->price * $data['quantity'];
+        $effect = $result['quantity'] * $fruit->price;
+        $bill = $order->total_bill + $total - $effect;
+        return $this->orderRepository->update($order->id,[
+                    'total_bill' => $bill
+                ]);
     }
 }

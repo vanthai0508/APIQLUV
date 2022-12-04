@@ -30,4 +30,18 @@ class ShoppingCartDetailController extends Controller
         }
         
     }
+
+    public function updateFruitCart(Request $data)
+    {
+        if($result = $this->shoppingCartDetail->updateFruitCart($data->all())) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails')
+            ]);
+        }
+    }
 }

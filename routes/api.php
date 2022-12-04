@@ -59,6 +59,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
                 Route::post('updateOrder', 'App\Http\Controllers\OrderController@update');
 
                 Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
+
+                Route::post('updateFruitCart', 'App\Http\Controllers\ShoppingCartDetailController@updateFruitCart');
             
             });
 

@@ -17,6 +17,7 @@ class OrderController extends Controller
 
     public function update(Request $data)
     {
+        $data['status'] = 1;
         if($result = $this->orderService->update($data->all())) {
             return response()->json([
                 'status' => __('message.success'),
