@@ -17,15 +17,12 @@ class FruitService
     public function create(array $data)
     {
         try{
-            
+
+            $destination_path = "public/Fruit";
             $file = $data['image_url'];
-
-            $file->move('fruit', $file->getClientOriginalName());
-
+            $file->storeAs($destination_path, $file->getClientOriginalName());
             //  $request['id_user'] = Auth::user()->id;
-
             $link = $file->getClientOriginalName();
-
             $data['image_url'] = 'public/Fruit/'.$link;
             return $this->fruitRepository->create($data);
         } catch(Exception $e) {
