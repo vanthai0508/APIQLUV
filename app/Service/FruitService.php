@@ -23,7 +23,7 @@ class FruitService
             $file->storeAs($destination_path, $file->getClientOriginalName());
             //  $request['id_user'] = Auth::user()->id;
             $link = $file->getClientOriginalName();
-            $data['image_url'] = 'http://116.105.26.48/storage/Fruit/'.$link;
+            $data['image_url'] = '/storage/Fruit/'.$link;
             return $this->fruitRepository->create($data);
         } catch(Exception $e) {
             return null;
