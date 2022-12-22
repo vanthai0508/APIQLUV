@@ -31,9 +31,9 @@ class ShoppingCartController extends Controller
         
     }
 
-    public function listFruitOfCart($id)
+    public function listFruitOfCart()
     {
-        if($result = $this->shoppingCartService->listFruitOfCart($id)) {
+        if($result = $this->shoppingCartService->listFruitOfCart()) {
             return response()->json([
                 'status' => __('message.success'),
                 'data' => $result

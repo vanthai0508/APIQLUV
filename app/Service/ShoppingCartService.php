@@ -45,11 +45,20 @@ class ShoppingCartService
         }
     }
 
-    public function listFruitOfCart($id)
+    public function listFruitOfCart()
     {
         try {
-            $shoppingCart = $this->shoppingCartRepository->find($id);
-            return $shoppingCart->shoppingCartDetail;
+            $user = Auth::user();
+            $listOrder = $user->order;
+            // $shoppingCart = $this->shoppingCartRepository->find($id);
+            // return $shoppingCart->shoppingCartDetail;
+            foreach($listOrder as $order) {
+                if($order['status']==2) {
+                    $listFruit = $order->ShoppingCart->ShoppingCartDetail;
+                    return $listFruit;
+                }
+            }
+            return null;
         } catch(Exception $e) {
             return null;
         }

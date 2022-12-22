@@ -31,6 +31,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
     Route::post('reset-password/{token}', 'App\Http\Controllers\ResetPasswordController@reset');
 
+    Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
+
     Route::group([ 'middleware' => 'auth:api' ], function() 
     {
         
@@ -46,7 +48,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
             
             Route::group(['middleware' => 'User-Account'], function()
             {
-                Route::get('listFruitOfCart/{id}', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
+                Route::get('listFruitOfCart', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
             
@@ -70,6 +72,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
         {
             Route::group(['middleware' => 'User-Account-Admin'], function()
             {
+                Route::get('listFruitOfCart', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
             
