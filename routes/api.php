@@ -25,6 +25,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
     
     Route::post('login', 'App\Http\Controllers\AuthController@login');
 
+    Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+
     Route::post('signup', 'App\Http\Controllers\AuthController@signup');
 
     Route::post('reset-password', 'App\Http\Controllers\ResetPasswordController@sendMail');
