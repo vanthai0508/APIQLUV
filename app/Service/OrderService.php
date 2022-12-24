@@ -21,7 +21,15 @@ class OrderService
     public function update(array $data)
     {
         try {
-            return $this->orderRepository->update($data['id'], $data);
+            // return $this->orderRepository->update($data['id'], $data);
+            $user = Auth::user();
+            $listOrder = $user->order;
+            foreach($listOrder as $order) {
+                if($order['status'] == 2){
+                    return $this->orderRepository->update($order['id'], $data);
+                }
+            }
+            return null;
         } catch(Exception $e) {
             return null;
         }
