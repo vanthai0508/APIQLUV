@@ -60,10 +60,9 @@ class FruitController extends Controller
         
     }
 
-    public function searchFruit(Request $data)
+    public function searchFruit($fruit_name)
     {
-        if($data = $this->fruitService->searchFruit($data['fruit_name'])) {
-            
+        if($data = $this->fruitService->searchFruit($fruit_name)) {
             return response()->json([
                 'status' => __('message.success'),
                 'data' => $data

@@ -35,7 +35,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
 
     Route::get('getFruitFollowId/{id}', 'App\Http\Controllers\FruitController@getFruitFollowId');
 
-    Route::post('searchFruit', 'App\Http\Controllers\FruitController@searchFruit');
+    Route::post('searchFruit/{fruit_name}', 'App\Http\Controllers\FruitController@searchFruit');
 
     Route::group([ 'middleware' => 'auth:api' ], function() 
     {
@@ -56,7 +56,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
 
-                Route::post('searchFruit', 'App\Http\Controllers\FruitController@searchFruit');
+                Route::post('searchFruit/{fruit_name}', 'App\Http\Controllers\FruitController@searchFruit');
             
                 Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
 
@@ -82,7 +82,7 @@ Route::group([ 'prefix' => 'auth' ], function ()
             {
                 Route::get('listFruitOfCart', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
                 
-                Route::post('searchFruit', 'App\Http\Controllers\FruitController@searchFruit');
+                Route::post('searchFruit/{fruit_name}', 'App\Http\Controllers\FruitController@searchFruit');
 
                 Route::get('listOrder', 'App\Http\Controllers\OrderController@listOrder');
                 
