@@ -26,10 +26,22 @@ class OrderService
             $listOrder = $user->order;
             foreach($listOrder as $order) {
                 if($order['status'] == 2){
+                    $data['date'] = date('y-m-d h:i:s');
                     return $this->orderRepository->update($order['id'], $data);
                 }
             }
             return null;
+        } catch(Exception $e) {
+            return null;
+        }
+    }
+
+    public function listOrder()
+    {
+        try {
+            $user = Auth::user();
+            $listOrder = $user->order;
+            return $listOrder;
         } catch(Exception $e) {
             return null;
         }

@@ -30,4 +30,18 @@ class OrderController extends Controller
         }
         
     }
+
+    public function listOrder()
+    {
+        if($result = $this->orderService->listOrder()) {
+            return response()->json([
+                'status' => __('message.success'),
+                'data' => $result
+            ]);
+        } else {
+            return response()->json([
+                'status' => __('message.fails'),
+            ]);
+        }
+    }
 }
