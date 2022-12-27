@@ -10,4 +10,5 @@ class OrderDetailRepository extends BaseRepository implements OrderDetailReposit
     {
         parent::__construct($model);
     }
+    
 }

@@ -10,4 +10,9 @@ class FruitRepository extends BaseRepository implements FruitRepositoryInterface
     {
         parent::__construct($model);
     }
+
+    public function searchFruit(string $data)
+    {
+        return Fruit::where('fruit_name', 'LIKE', "%$data%")->get();
+    }
 }

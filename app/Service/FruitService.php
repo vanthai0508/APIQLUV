@@ -57,6 +57,15 @@ class FruitService
         }
     }
 
+    public function searchFruit($data)
+    {
+        try{    
+            return $this->fruitRepository->searchFruit($data);
+        } catch(Exception $e) {
+            return null;
+        }
+    }
+
     public function delete(int $id)
     {
         try{

@@ -63,7 +63,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => __('message.fails'),
                 'message' => "Sai tài khoản hoặc mật khẩu"
-            ], 401);  
+            ]);  
         }
         else
         {

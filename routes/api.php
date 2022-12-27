@@ -53,6 +53,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
                 Route::get('listFruitOfCart', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
+
+                Route::post('searchFruit', 'App\Http\Controllers\FruitController@searchFruit');
             
                 Route::post('createShoppingCart', 'App\Http\Controllers\ShoppingCartController@create');
 
@@ -75,6 +77,8 @@ Route::group([ 'prefix' => 'auth' ], function ()
             Route::group(['middleware' => 'User-Account-Admin'], function()
             {
                 Route::get('listFruitOfCart', 'App\Http\Controllers\ShoppingCartController@listFruitOfCart');
+                
+                Route::post('searchFruit', 'App\Http\Controllers\FruitController@searchFruit');
                 
                 Route::get('getAllFruit', 'App\Http\Controllers\FruitController@getAll');
             
